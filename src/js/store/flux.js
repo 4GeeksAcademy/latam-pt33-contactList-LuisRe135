@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			arrayOfCOntacts: [{}],
 			demo: [
 				{
 					title: "FIRST",
@@ -15,6 +16,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+			// Luis' code
+			loadContacts: async() => {
+				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts",{
+					method: "GET"
+				})
+				const data = await response.json();
+				setStore({arrayOfCOntacts: data.contacts})
+				console.log("Contacts loaded")
+				console.log(data)
+				console.log(data.contacts)
+				console.log("ignored arrayOfCOntacts?")
+			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
