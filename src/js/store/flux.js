@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			arrayOfCOntacts: [{}],
+			arrayOfCOntacts: [],
 			demo: [
 				{
 					title: "FIRST",
@@ -25,8 +25,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({arrayOfCOntacts: data.contacts})
 				console.log("Contacts loaded")
 				console.log(data)
-				console.log(data.contacts)
-				console.log("ignored arrayOfCOntacts?")
+			},
+			updateContact: async(id)=>{
+				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts/"+id,
+					{method: "PUT",
+					body: JSON.stringify({
+						name: updated_name,
+						phone: updatedPhone,
+						address: updatedAddress,
+						email: updatedEmail
+					  })
+					} 
+				)
+				const data = await response.json();
+				// Setear los nuevos datos en el contact
+			},
+			deleteContact: async(id)=>{
+				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts/"+id,
+					{method: "DELETE"					} 
+				)
+				const data = await response.json();
+				// Setear los nuevos datos en el contact
+			},
+			createContact: async(id)=>{
+				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts",
+					{method: "POST",
+					body: JSON.stringify({
+						name: updated_name,
+						phone: updatedPhone,
+						address: updatedAddress,
+						email: updatedEmail
+					  })
+					} 
+				)
+				const data = await response.json();
+				// Setear los nuevos datos en el contact
 			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {

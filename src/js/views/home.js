@@ -10,11 +10,11 @@ export const Home = () => {
 	const {store} = useContext(Context);
 	
 	return (
-	<div className="text-center mt-5">
+	<div className="text-center m-5 container">
 			{store.arrayOfCOntacts.map((item, index)=>{
-				return <h1>contacto 2</h1>
+				return <ContactCard key={index} fullName={item.name} address={item.address} phone={item.phone} email={item.email} editContact={()=> updateContact(item.id)} />
 			})}
-		<p>how about this?</p>
+
 		
 	</div>
 )};
