@@ -1,31 +1,44 @@
-import React from 'react'
+import React, {useState} from 'react'
+
 
 
 const ContactForm = ()=> {
+  const [contactInfo, setContactInfo] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    address: ""
+  })
     return (
         
-    <form>
-         <div class="mb-3">
-          <label htmlFor="fullName" class="form-label">Full Name</label>
-          <input type="text" class="form-control" id="fullName" aria-describedby="emailHelp" />
+    <form className='container'>
+         <div className="mb-3">
+          <label htmlFor="fullName" className="form-label">Full Name</label>
+          <input onChange={(e) => {setContactInfo({...contactInfo}, {name: e.target.value})}} type="text" className="form-control" id="fullName" />
          
         </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+        <div className="mb-3">
+          <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
+          <input type="email" className="form-control" id="email" />
           
         </div>
-        <div class="mb-3">
-          <label for="phone" class="form-label">Phone</label>
-          <input type="email" class="form-control" id="phone" aria-describedby="emailHelp" />
+        <div className="mb-3">
+          <label htmlFor="phone" className="form-label">Phone</label>
+          <input type="text" className="form-control" id="phone" />
         </div>
-        <div class="mb-3">
-          <label for="address" class="form-label">Address</label>
-          <input type="email" class="form-control" id="Address" aria-describedby="emailHelp" />
+        <div className="mb-3">
+          <label htmlFor="address" className="form-label">Address</label>
+          <input type="text" className="form-control" id="Address" />
         </div>
-        <button class="btn btn-primary">Submit</button>
+        <button onClick={console.log(contactInfo.name)} className="btn btn-primary">Submit</button>
       </form>
     )
       
 }
+// (event)=> {setContactInfo(
+          // { "name": fullName.value, 
+          //   "phone": phone.value,
+          //   "address": address.value,
+          //   "email": email.value })}} 
+
 export default ContactForm;

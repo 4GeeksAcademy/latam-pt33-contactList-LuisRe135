@@ -14,9 +14,9 @@ const ContactCard = (props) => {
             </div>
             <div className="">
                  {/* primero enrutar a una form para update los datos then Connect with updateContact() */}
-                <Link to="/ContactForm" ><i class="fa-solid fa-pencil"></i></Link>
+                <Link to="/ContactForm" ><i className="fa-solid fa-pencil" onClick={()=>{props.onUpdate(props.id)}} ></i></Link>
                  {/* Connect with deleteContact() */}
-                <span ><i class="fa-solid fa-trash-can"></i></span>
+                <span onClick={()=>{props.onRemove()}}><i className="fa-solid fa-trash-can"></i></span>
 
             </div>
 
