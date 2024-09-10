@@ -11,6 +11,7 @@ export const Home = () => {
 	
 	return (
 	<div className="text-center m-5 container">
+		
 			{store.arrayOfCOntacts.map((item, index)=>{
 				return <ContactCard key={index} fullName={item.name} address={item.address} phone={item.phone} email={item.email} editContact={()=> updateContact(item.id)} />
 			})}

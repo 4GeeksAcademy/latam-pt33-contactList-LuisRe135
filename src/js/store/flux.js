@@ -42,7 +42,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			deleteContact: async(id)=>{
 				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts/"+id,
-					{method: "DELETE"					} 
+					{method: "DELETE"} 
 				)
 				const data = await response.json();
 				// Setear los nuevos datos en el contact

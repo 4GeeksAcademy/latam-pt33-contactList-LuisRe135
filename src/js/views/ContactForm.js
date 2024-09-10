@@ -1,12 +1,12 @@
 import React from 'react'
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 
 const ContactForm = ()=> {
     return (
         
     <form>
          <div class="mb-3">
-          <label for="fullName" class="form-label">Full Name</label>
+          <label htmlFor="fullName" class="form-label">Full Name</label>
           <input type="text" class="form-control" id="fullName" aria-describedby="emailHelp" />
          
         </div>
