@@ -17,35 +17,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			// Luis' code
+			createAgenda: async() => {
+				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts/",
+					{method: "POST"})
+			},
 			loadContacts: async() => {
 				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts",{
 					method: "GET"
 				})
-				const data = await response.json();
-				setStore({arrayOfCOntacts: data.contacts})
-				console.log("Contacts loaded")
-				console.log(data)
+				if (response.ok){
+					const data = await response.json();
+					setStore({arrayOfCOntacts: data.contacts})
+					console.log("Contacts loaded")
+					console.log(data)
+				}
 			},
-			updateContact: async(id)=>{
-				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts/"+id,
-					{method: "PUT",
-					body: JSON.stringify({
-						name: updated_name,
-						phone: updatedPhone,
-						address: updatedAddress,
-						email: updatedEmail
-					  })
-					} 
-				)
-				const data = await response.json();
-				console.log("contact updated: "+data)
+			updateContact: async(contact)=>{
+				// const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts/"+contact.id,
+				// 	{method: "PUT",
+				// 	body: JSON.stringify({
+				// 		name: contact.name,
+				// 		phone: contact.phone,
+				// 		address: contact.address,
+				// 		email: contact.email
+				// 	  })
+				// 	} 
+				// )
+				// const data = await response.json();
+				console.log("contact updated: ")
 			},
 			deleteContact: async(id)=>{
-				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts/"+id,
-					{method: "DELETE"} 
-				)
-				const data = await response.json();
+				// const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts/"+id,
+				// 	{method: "DELETE"} 
+				// )
+				// const data = await response.json();
 				// Setear los nuevos datos en el contact
+				console.log("lo lograste!")
 			},
 			createContact: async(id)=>{
 				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts",

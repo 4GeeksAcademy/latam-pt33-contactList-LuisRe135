@@ -1,14 +1,16 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import getState, {state, actions, updateContact} from  "../store/flux"
+import { Context } from '../store/appContext'
 
 
-
-const ContactForm = ()=> {
+const ContactUpdate = (props)=> {
   const [contactInfo, setContactInfo] = useState({
     name: "",
     email: "",
     phone: "",
     address: ""
   })
+  const funcionesCrud = useContext(Context)
     return (
         
     <div className='container'>
@@ -39,10 +41,10 @@ const ContactForm = ()=> {
             setContactInfo({...contactInfo, address: e.target.value})
           }} type="text" className="form-control" id="Address" />
         </div>
-        <button onClick={()=>{console.log(contactInfo)}} className="btn btn-primary">Submit</button>
+        <button onClick={()=>{actions.updateContact(contactInfo)}} className="btn btn-primary">Submit</button>
       </div>
     )
       
 }
 
-export default ContactForm;
+export default ContactUpdate;
