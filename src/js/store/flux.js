@@ -33,18 +33,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			updateContact: async(contact)=>{
-				// const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts/"+contact.id,
-				// 	{method: "PUT",
-				// 	body: JSON.stringify({
-				// 		name: contact.name,
-				// 		phone: contact.phone,
-				// 		address: contact.address,
-				// 		email: contact.email
-				// 	  })
-				// 	} 
-				// )
-				// const data = await response.json();
-				console.log("contact updated: ")
+				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts/"+contact.id,
+					{method: "PUT",
+					body: JSON.stringify({
+						name: contact.name,
+						phone: contact.phone,
+						address: contact.address,
+						email: contact.email
+					  })
+					} 
+				)
+				const data = await response.json();
+				console.log("contact updated: ", contact)
 			},
 			deleteContact: async(id)=>{
 				// const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts/"+id,
@@ -54,14 +54,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// Setear los nuevos datos en el contact
 				console.log("lo lograste!")
 			},
-			createContact: async(id)=>{
+			createContact: async(contact)=>{
 				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts",
 					{method: "POST",
 					body: JSON.stringify({
-						name: updated_name,
-						phone: updatedPhone,
-						address: updatedAddress,
-						email: updatedEmail
+						name: contact.name,
+						phone: contact.phone,
+						address: contact.address,
+						email: contact.email
 					  })
 					} 
 				)

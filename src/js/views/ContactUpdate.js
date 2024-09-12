@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react'
-import getState, {state, actions, updateContact} from  "../store/flux"
+import getState, {state, actions} from  "../store/flux"
 import { Context } from '../store/appContext'
 
 
@@ -10,7 +10,7 @@ const ContactUpdate = (props)=> {
     phone: "",
     address: ""
   })
-  const funcionesCrud = useContext(Context)
+  const {actions} = useContext(Context)
     return (
         
     <div className='container'>

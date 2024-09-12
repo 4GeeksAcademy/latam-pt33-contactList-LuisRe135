@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-
+import getState, {state, actions} from  "../store/flux"
 
 
 const ContactForm = ()=> {
@@ -9,6 +9,8 @@ const ContactForm = ()=> {
     phone: "",
     address: ""
   })
+
+  const {actions} = useContext(Context)
     return (
         
     <div className='container'>
@@ -21,6 +23,12 @@ const ContactForm = ()=> {
          
         </div>
         <div className="mb-3">
+          <label htmlFor="phone" className="form-label">Phone</label>
+          <input onChange={(e) => {
+            setContactInfo({...contactInfo, phone: e.target.value})
+          }} type="text" className="form-control" id="phone" />
+        </div>
+        <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
           <input onChange={(e) => {
             setContactInfo({...contactInfo, email: e.target.value})
@@ -28,18 +36,12 @@ const ContactForm = ()=> {
           
         </div>
         <div className="mb-3">
-          <label htmlFor="phone" className="form-label">Phone</label>
-          <input onChange={(e) => {
-            setContactInfo({...contactInfo, phone: e.target.value})
-          }} type="text" className="form-control" id="phone" />
-        </div>
-        <div className="mb-3">
           <label htmlFor="address" className="form-label">Address</label>
           <input onChange={(e) => {
             setContactInfo({...contactInfo, address: e.target.value})
           }} type="text" className="form-control" id="Address" />
         </div>
-        <button onClick={()=>{console.log(contactInfo)}} className="btn btn-primary">Submit</button>
+        <button onClick={()=>{actions.createContact(contactInfo)}} className="btn btn-primary">Submit</button>
       </div>
     )
       
