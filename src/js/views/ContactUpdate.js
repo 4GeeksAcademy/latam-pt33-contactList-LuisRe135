@@ -1,8 +1,8 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import getState, {state, actions} from  "../store/flux"
 import { Context } from '../store/appContext'
 import { useParams } from 'react-router-dom'
-
+import { useNavigate } from "react-router-dom";
 
 
 const ContactUpdate = (props)=> {
@@ -12,7 +12,15 @@ const ContactUpdate = (props)=> {
     phone: "",
     address: ""
   })
+  const navigate = useNavigate();
   const {actions} = useContext(Context)
+  const refreshContacts = () => {
+    navigate("/")
+    // useEffect(()=>{
+    //   actions.loadContacts();
+    // }, []);
+  }
+  
   const {id} = useParams()
     return (
         
@@ -44,7 +52,7 @@ const ContactUpdate = (props)=> {
             setContactInfo({...contactInfo, address: e.target.value})
           }} type="text" className="form-control" id="Address" />
         </div>
-        <button onClick={()=>{actions.updateContact({...contactInfo, id})}} className="btn btn-primary">Submit</button>
+        <button onClick={()=>{actions.updateContact({...contactInfo, id}); refreshContacts();}} className="btn btn-primary">Submit</button>
       </div>
     )
       

@@ -1,6 +1,8 @@
 import React, {useState, useContext} from 'react'
 import getState, {state, actions} from  "../store/flux"
 import { Context } from '../store/appContext'
+import { useNavigate } from "react-router-dom";
+
 
 
 const ContactForm = ()=> {
@@ -10,6 +12,7 @@ const ContactForm = ()=> {
     phone: "",
     address: ""
   })
+  const navigate = useNavigate();
 
   const {actions} = useContext(Context)
     return (
@@ -42,7 +45,7 @@ const ContactForm = ()=> {
             setContactInfo({...contactInfo, address: e.target.value})
           }} type="text" className="form-control" id="Address" />
         </div>
-        <button onClick={()=>{actions.createContact(contactInfo)}} className="btn btn-primary">Submit</button>
+        <button onClick={()=>{actions.createContact(contactInfo);  navigate("/")}} className="btn btn-primary">Submit</button>
       </div>
     )
       

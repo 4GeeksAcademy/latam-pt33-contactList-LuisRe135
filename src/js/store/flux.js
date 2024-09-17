@@ -18,10 +18,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			// Luis' code
 			createAgenda: async() => {
+				console.log("creating agenda")
 				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/",
 					{method: "POST"})
+				
 			},
 			createContact: async(contact) => {
+			
 				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts",
 					{
 						method: "POST",
@@ -32,15 +35,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 			},
 			loadContacts: async() => {
+				
 				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts",{
 					method: "GET"
 				})
+				console.log(response)
 				if (response.ok){
 					const data = await response.json();
 					setStore({arrayOfCOntacts: data.contacts})
 					console.log("Contacts loaded")
 					console.log(data)
-				}
+				} 
 			},
 			updateContact: async(contact)=>{
 				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts/"+contact.id,
@@ -53,12 +58,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log("contact updated: ", contact)
 			},
 			deleteContact: async(id)=>{
-				// const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts/"+id,
-				// 	{method: "DELETE"} 
-				// )
-				// const data = await response.json();
+				console.log("borrando usuario")
+				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts/"+id,
+					{method: "DELETE"} 
+				)
+				const data = await response.json();
 				// Setear los nuevos datos en el contact
-				console.log("lo lograste!")
+				console.log("usuario borrado")
 			},
 		
 			// Use getActions to call a function within a fuction
