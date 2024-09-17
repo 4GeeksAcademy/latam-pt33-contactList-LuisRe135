@@ -1,6 +1,8 @@
 import React, {useState, useContext} from 'react'
 import getState, {state, actions} from  "../store/flux"
 import { Context } from '../store/appContext'
+import { useParams } from 'react-router-dom'
+
 
 
 const ContactUpdate = (props)=> {
@@ -11,6 +13,7 @@ const ContactUpdate = (props)=> {
     address: ""
   })
   const {actions} = useContext(Context)
+  const {id} = useParams()
     return (
         
     <div className='container'>
@@ -41,7 +44,7 @@ const ContactUpdate = (props)=> {
             setContactInfo({...contactInfo, address: e.target.value})
           }} type="text" className="form-control" id="Address" />
         </div>
-        <button onClick={()=>{actions.updateContact(contactInfo)}} className="btn btn-primary">Submit</button>
+        <button onClick={()=>{actions.updateContact({...contactInfo, id})}} className="btn btn-primary">Submit</button>
       </div>
     )
       

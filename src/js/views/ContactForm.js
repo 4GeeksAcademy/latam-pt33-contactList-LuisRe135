@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import getState, {state, actions} from  "../store/flux"
+import { Context } from '../store/appContext'
 
 
 const ContactForm = ()=> {

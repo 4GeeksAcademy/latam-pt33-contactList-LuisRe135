@@ -34,7 +34,7 @@ const injectContext = PassedComponent => {
 
 			state.actions.loadContacts()
 			// puedo poner un || operator para registrar mi agenda si no existe? i.e.:
-			// state.actions.loadContacts() || state.actions.createUser()
+			// state.actions.loadContacts() || state.actions.createContact()
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,

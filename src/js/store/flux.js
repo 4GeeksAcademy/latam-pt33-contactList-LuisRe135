@@ -18,8 +18,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			// Luis' code
 			createAgenda: async() => {
-				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts/",
+				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/",
 					{method: "POST"})
+			},
+			createContact: async(contact) => {
+				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts",
+					{
+						method: "POST",
+						headers: {"Content-Type": "application/json"},
+						body: JSON.stringify(contact)
+					}
+				)
+			
 			},
 			loadContacts: async() => {
 				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts",{
@@ -35,12 +45,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			updateContact: async(contact)=>{
 				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts/"+contact.id,
 					{method: "PUT",
-					body: JSON.stringify({
-						name: contact.name,
-						phone: contact.phone,
-						address: contact.address,
-						email: contact.email
-					  })
+					headers: {"Content-Type": "application/json"},
+					body: JSON.stringify(contact)
 					} 
 				)
 				const data = await response.json();
@@ -54,20 +60,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// Setear los nuevos datos en el contact
 				console.log("lo lograste!")
 			},
-			createContact: async(contact)=>{
-				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts",
-					{method: "POST",
-					body: JSON.stringify({
-						name: contact.name,
-						phone: contact.phone,
-						address: contact.address,
-						email: contact.email
-					  })
-					} 
-				)
-				const data = await response.json();
-				// Setear los nuevos datos en el contact
-			},
+		
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
