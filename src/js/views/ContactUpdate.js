@@ -13,12 +13,11 @@ const ContactUpdate = (props)=> {
     address: ""
   })
   const navigate = useNavigate();
-  const {actions} = useContext(Context)
+  const {state, actions} = useContext(Context)
   const refreshContacts = () => {
+    
+    actions.loadContacts()
     navigate("/")
-    // useEffect(()=>{
-    //   actions.loadContacts();
-    // }, []);
   }
   
   const {id} = useParams()

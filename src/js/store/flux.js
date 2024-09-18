@@ -63,6 +63,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					{method: "DELETE"} 
 				)
 				const data = await response.json();
+			
 				// Setear los nuevos datos en el contact
 				console.log("usuario borrado")
 			},
