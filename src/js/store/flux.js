@@ -32,6 +32,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						body: JSON.stringify(contact)
 					}
 				)
+				getActions().loadContacts()
 			
 			},
 			loadContacts: async() => {
@@ -56,15 +57,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				)
 				const data = await response.json();
 				console.log("contact updated: ", contact)
+				getActions().loadContacts()
 			},
 			deleteContact: async(id)=>{
 				console.log("borrando usuario")
 				const response = await fetch("https://playground.4geeks.com/contact/agendas/luisReneContacts/contacts/"+id,
 					{method: "DELETE"} 
 				)
-				const data = await response.json();
+				
 			
 				// Setear los nuevos datos en el contact
+				getActions().loadContacts();
 				console.log("usuario borrado")
 			},
 		

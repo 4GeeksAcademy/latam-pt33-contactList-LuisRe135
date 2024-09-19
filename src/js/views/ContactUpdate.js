@@ -14,11 +14,11 @@ const ContactUpdate = (props)=> {
   })
   const navigate = useNavigate();
   const {state, actions} = useContext(Context)
-  const refreshContacts = () => {
+  // const refreshContacts = async() => {
     
-    actions.loadContacts()
-    navigate("/")
-  }
+  //   // actions.loadContacts()
+  //   navigate("/")
+  // }
   
   const {id} = useParams()
     return (
@@ -51,7 +51,7 @@ const ContactUpdate = (props)=> {
             setContactInfo({...contactInfo, address: e.target.value})
           }} type="text" className="form-control" id="Address" />
         </div>
-        <button onClick={()=>{actions.updateContact({...contactInfo, id}); refreshContacts();}} className="btn btn-primary">Submit</button>
+        <button onClick={async()=>{await actions.updateContact({...contactInfo, id}); navigate("/")}} className="btn btn-primary">Submit</button>
       </div>
     )
       

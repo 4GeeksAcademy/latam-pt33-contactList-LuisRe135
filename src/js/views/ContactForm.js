@@ -14,12 +14,12 @@ const ContactForm = ()=> {
   })
   const navigate = useNavigate();
   const {state, actions} = useContext(Context)
-  const refreshContacts = () => {
+  // const refreshContacts = () => {
     
-    actions.loadContacts()
-    console.log("after loadContacts")
-    navigate("/")
-  }
+  //   actions.loadContacts()
+  //   console.log("after loadContacts")
+  //   navigate("/")
+  // }
 
     return (
         
@@ -51,7 +51,7 @@ const ContactForm = ()=> {
             setContactInfo({...contactInfo, address: e.target.value})
           }} type="text" className="form-control" id="Address" />
         </div>
-        <button onClick={()=>{actions.createContact(contactInfo);  refreshContacts()}} className="btn btn-primary">Submit</button>
+        <button onClick={()=>{actions.createContact(contactInfo);  navigate("/")}} className="btn btn-primary">Submit</button>
       </div>
     )
       
